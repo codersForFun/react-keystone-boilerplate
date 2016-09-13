@@ -49,6 +49,7 @@
     "multer": "0.1.8",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
+    "react-helmet": "^3.1.0",
     "react-router": "^2.0.0",
     "serve-favicon": "^2.3.0",
     "serve-static": "^1.11.1"

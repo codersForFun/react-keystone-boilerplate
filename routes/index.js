@@ -5,6 +5,7 @@ import React from 'react';
 import { match, RouterContext } from 'react-router';
 import { renderToString } from 'react-dom/server';
 import routes from '../src/routes.js';
+import Helmet from 'react-helmet';
 
 keystone.pre('routes', (req, res, next) => {
   res.locals.user = req.user;
@@ -60,21 +61,31 @@ exports = module.exports = (app) => {
   }
 
   // Render Initial HTML
-  const renderFullPage = (html) => (
-    `<!doctype html>
-      <html>
-        <head>
-          <link rel='stylesheet' href='/styles/main.css' />
-          <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
-        </head>
-        <body>
-          <section role="main" class="react-container">
-            <div id="root">${html}</div>
-          </section>
-          <script src='/js/app.js'></script>
-        </body>
+  const renderFullPage = (html, initialState) => {
+    const head = Helmet.rewind();
+    return (
+      `<!doctype html>
+        <html>
+          <head>
+            ${head.base.toString()}
+            ${head.title.toString()}
+            ${head.meta.toString()}
+            ${head.link.toString()}
+            ${head.script.toString()}
+            <link rel='stylesheet' href='/styles/main.css' />
+            <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
+            <script>window.__APP_INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
+            <title>Unimer Landing</title>
+          </head>
+          <body>
+            <section role="main" class="react-container">
+              <div id="root">${html}</div>
+            </section>
+            <script src='/js/app.js'></script>
+          </body>
       </html>`
     );
+  };
 
   // match the backend routes with the client routes
   app.use((req, res) => {
@@ -91,7 +102,7 @@ exports = module.exports = (app) => {
         res
           .set('Content-Type', 'text/html')
           .status(200)
-          .end(renderFullPage(content));
+          .end(renderFullPage(content, {}));
       } else {
         res.status(404).send('Not found');
       }

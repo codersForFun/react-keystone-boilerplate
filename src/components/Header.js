@@ -8,7 +8,6 @@ const Header = () => (
           <img className="top-header-img" src="" alt="" />
           <img className="ripped ripped-header-img" src="" alt="" />
           <h1>Unimer Landing</h1>
-          <a href="/hola">Hola</a>
         </div>
       </div>
     </header>
