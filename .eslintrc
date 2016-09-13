@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "react/prop-types": 0,
+    "react/jsx-no-bind": 0,
+    "comma-dangle": [1, "always-multiline"],
+    "no-underscore-dangle": 0,
+    "strict": 0,
+    "no-console": 0,
+    "no-param-reassign": 0,
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-indent-props": [1, 2],
+    "react/jsx-indent": [1, 2],
+    "max-len": 0,
+    "arrow-body-style": [0],
+  },
+}
