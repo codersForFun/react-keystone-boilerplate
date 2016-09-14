@@ -1,52 +1,24 @@
 'use strict';
-const keystone = require('keystone');
-const importRoutes = keystone.importer(__dirname);
 import React from 'react';
 import { match, RouterContext } from 'react-router';
 import { renderToString } from 'react-dom/server';
 import routes from '../src/routes.js';
 import Helmet from 'react-helmet';
 
-keystone.pre('routes', (req, res, next) => {
-  res.locals.user = req.user;
-  next();
-});
+// React And Redux Setup
+import { configureStore } from '../src/store';
+import { Provider } from 'react-redux';
 
-// Handle 404 errors
-keystone.set('404', (req, res) => {
-  res.status(404).render('404', {
-    errorTitle: '404',
-    errorMsg: 'Ups',
-  });
-});
+import { fetchComponentData } from './util/fetchData';
 
-// Handle other errors
-keystone.set('500', (err, req, res) => {
-  let title;
-  let message;
-
-  if (err instanceof Error) {
-    message = err.message;
-    err = err.stack;
-  }
-
-  console.log(err);
-
-  res.status(500).render('500', {
-    err,
-    errorTitle: title,
-    errorMsg: message,
-  });
-});
-
-// Import Route Controllers
-// const routes = {
-//   controllers: importRoutes('./controllers'),
-//   api: importRoutes('./api'),
-// };
+// api
+import posts from './api/home.routes';
 
 // Setup Route Bindings
 exports = module.exports = (app) => {
+  // Setup API use
+  app.use('/api', posts);
+
   // Allow cross-domain requests (development only)
   if (process.env.NODE_ENV !== 'production') {
     console.log('------------------------------------------------');
@@ -74,7 +46,7 @@ exports = module.exports = (app) => {
             ${head.script.toString()}
             <link rel='stylesheet' href='/styles/main.css' />
             <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
-            <script>window.__APP_INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
+            <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};</script>
             <title>Unimer Landing</title>
           </head>
           <body>
@@ -88,24 +60,36 @@ exports = module.exports = (app) => {
   };
 
   // match the backend routes with the client routes
-  app.use((req, res) => {
+  app.use((req, res, next) => {
     match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
       if (error) {
         res.status(500).send(error.message);
-      } else if (redirectLocation) {
-        res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-      } else if (renderProps) {
-        const content = renderToString(<RouterContext {...renderProps} />);
-        // res.status(200).render('index.jade', { html: content });
-        // Use this if want to render from React Router
-        // res.status(200).send(content);
-        res
-          .set('Content-Type', 'text/html')
-          .status(200)
-          .end(renderFullPage(content, {}));
-      } else {
-        res.status(404).send('Not found');
       }
+      if (redirectLocation) {
+        res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+      }
+      // if (!renderProps) {
+      //   res.status(404).send('Not found');
+      // }
+
+      console.log('RENDERPROPS', renderProps);
+
+      const store = configureStore();
+      return fetchComponentData(store, renderProps.components, renderProps.params)
+        .then(() => {
+          const initialView = renderToString(
+            <Provider store={store}>
+              <RouterContext {...renderProps} />
+            </Provider>
+          );
+          const finalState = store.getState();
+
+          res
+            .set('Content-Type', 'text/html')
+            .status(200)
+            .end(renderFullPage(initialView, finalState));
+        })
+        .catch((_error) => next(_error));
     });
   });
 };

@@ -1,15 +1,19 @@
 import React from 'react';
 import { Route } from 'react-router';
+import { Provider } from 'react-redux';
 
 import App from './components/App';
-import About from './components/About';
 import NotFound from './components/NotFound';
 
-const routes = (
-  <Route path="/" component={App}>
-    <Route path="about" component={About} />
-    <Route path="*" component={NotFound} />
-  </Route>
-);
+const routes = (props) => {
+  console.log('PROPS', props);
+  return (
+    <Provider store={props.store}>
+      <Route path="/" component={App}>
+        <Route path="*" component={NotFound} />
+      </Route>
+    </Provider>
+  );
+};
 
 export default routes;

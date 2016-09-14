@@ -26,21 +26,21 @@ import shell from 'gulp-shell';
 
 const paths = {
   bundle: 'app.js',
-  entry: 'src/Index.js',
+  entry: 'src/index.js',
   srcCss: 'src/**/*.scss',
   srcImg: 'src/images/**',
   srcLint: ['src/**/*.js'],
   dist: 'dist',
   distJs: 'dist/js',
   distImg: 'dist/images',
-  distDeploy: './dist/**/*'
+  distDeploy: './dist/**/*',
 };
 
 const customOpts = {
   entries: [paths.entry],
   debug: true,
   cache: {},
-  packageCache: {}
+  packageCache: {},
 };
 
 const opts = Object.assign({}, watchify.args, customOpts);
@@ -52,8 +52,8 @@ gulp.task('clean', cb => {
 gulp.task('browserSync', () => {
   browserSync({
     server: {
-      baseDir: './'
-    }
+      baseDir: './',
+    },
   });
 });
 
@@ -130,13 +130,15 @@ gulp.task('deploy', () => {
     .pipe(ghPages());
 });
 
-gulp.task('runKeystone', shell.task('nodemon --debug keystone.js'));
-
 gulp.task('watch', cb => {
   runSequence('clean', ['browserify', 'watchTask', 'watchify', 'styles', 'lint', 'images'], cb);
 });
 
 gulp.task('build', cb => {
   process.env.NODE_ENV = 'production';
-  runSequence('clean', ['browserify', 'styles', 'htmlReplace', 'images'], cb);
+  runSequence('clean', [
+    'browserify',
+    'styles',
+    // 'htmlReplace',
+    'images'], cb);
 });
