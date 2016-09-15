@@ -16,8 +16,7 @@
     "kickstarter",
     "ES6",
     "ES2015",
-    "babel",
-    "ava"
+    "babel"
   ],
   "ava": {
     "require": [
@@ -30,9 +29,8 @@
     "watch": "gulp watch",
     "build": "gulp build",
     "deploy": "gulp deploy",
-    "test": "ava --tap | tap-nyan",
     "keystone": "node keystone.js",
-    "keystoneD": "nodemon keystone.js"
+    "keystoneD": "nodemon --debug keystone.js"
   },
   "author": "David Pastor",
   "license": "MIT",
@@ -46,6 +44,8 @@
     "express": "^4.14.0",
     "history": "^2.0.0",
     "keystone": "^4.0.0-beta.2",
+    "keystone-email": "^1.0.5",
+    "limax": "^1.4.0",
     "multer": "0.1.8",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",

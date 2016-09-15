@@ -4,7 +4,7 @@
 import { combineReducers } from 'redux';
 
 // Import Reducers
-import app from './components/App-reducer';
+import app from './components/App/App-reducer';
 
 // Combine all reducers into one root reducer
 export default combineReducers({

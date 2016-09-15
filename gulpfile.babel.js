@@ -22,7 +22,6 @@ import imagemin from 'gulp-imagemin';
 import pngquant from 'imagemin-pngquant';
 import runSequence from 'run-sequence';
 import ghPages from 'gulp-gh-pages';
-import shell from 'gulp-shell';
 
 const paths = {
   bundle: 'app.js',
@@ -109,7 +108,7 @@ gulp.task('images', () => {
     .pipe(imagemin({
       progressive: true,
       svgoPlugins: [{ removeViewBox: false }],
-      use: [pngquant()]
+      use: [pngquant()],
     }))
     .pipe(gulp.dest(paths.distImg));
 });
@@ -140,5 +139,5 @@ gulp.task('build', cb => {
     'browserify',
     'styles',
     // 'htmlReplace',
-    'images'], cb);
+    'images',], cb);
 });

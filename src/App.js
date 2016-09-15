@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 
 // Import Routes
-import routes from '../routes';
+import routes from './routes';
 
 const App = (props) => (
   <Provider store={props.store}>
