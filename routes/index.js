@@ -55,7 +55,7 @@ exports = module.exports = (app) => {
                 window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
               </script>
             </section>
-            <script src='/js/app.js'></script>
+            <script src='/bundle.js'></script>
           </body>
       </html>`
     );
