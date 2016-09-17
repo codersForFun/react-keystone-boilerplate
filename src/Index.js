@@ -1,6 +1,7 @@
 require('babel-polyfill');
 
 import React from 'react';
+import { match } from 'react-router';
 import { render } from 'react-dom';
 
 import App from './App';
@@ -13,6 +14,10 @@ const mountApp = document.getElementById('root');
 
 window.React = React;
 
-render(
-  <App store={store} />, mountApp
-);
+match({ history: App.History, routes: App.Routes }, (error, redirectLocation, renderProps) => {
+  if (error) {
+    return console.error('Index require.ensure error', error);
+  }
+
+  return render(<App store={store} {...renderProps} />, mountApp);
+});

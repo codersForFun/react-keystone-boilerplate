@@ -1,18 +1,31 @@
-import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-
 import App from './components/App/App';
-import Header from './components/Header';
-import NotFound from './components/NotFound';
 
-export default (
-  <Route path="/" component={App}>
-    <IndexRoute
-      getComponent={(location, callback) => {
-        callback(null, Header);
-      }}
+if (typeof module !== 'undefined' && module.require) {
+  if (typeof require.ensure === 'undefined') {
+    require.ensure = require('node-ensure');
+  }
+}
 
-    />
-    <Route path="*" component={NotFound} />
-  </Route>
-);
+const rootRoute = {
+  component: App,
+  path: '/',
+  indexRoute: {
+    getComponent(location, cb) {
+      require.ensure([], () => {
+        cb(null, require('./components/Header').default);
+      });
+    },
+  },
+  childRoutes: [
+    {
+      path: 'search',
+      getComponent(location, cb) {
+        require.ensure([], () => {
+          cb(null, require('./components/NotFound').default);
+        });
+      },
+    },
+  ],
+};
+
+export default rootRoute;

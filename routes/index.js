@@ -19,19 +19,6 @@ exports = module.exports = (app) => {
   // Setup API use
   app.use('/api', posts);
 
-  // Allow cross-domain requests (development only)
-  if (process.env.NODE_ENV !== 'production') {
-    console.log('------------------------------------------------');
-    console.log('Notice: Enabling CORS for development.');
-    console.log('------------------------------------------------');
-    app.all('*', (req, res, next) => {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Methods', 'GET, POST');
-      res.header('Access-Control-Allow-Headers', 'Content-Type');
-      next();
-    });
-  }
-
   // Render Initial HTML
   const renderFullPage = (html, initialState) => {
     const head = Helmet.rewind();
