@@ -1,4 +1,6 @@
 'use strict';
+import Express from 'express';
+import path from 'path';
 
 // React And Redux Setup
 import { configureStore } from '../src/store';
@@ -16,6 +18,8 @@ import posts from './api/home.routes';
 
 // Setup Route Bindings
 exports = module.exports = (app) => {
+  app.use(Express.static(path.resolve(__dirname, '../dist')));
+
   // Setup API use
   app.use('/api', posts);
 
@@ -42,7 +46,7 @@ exports = module.exports = (app) => {
                 window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
               </script>
             </section>
-            <script src='/bundle.js'></script>
+            <script src='/js/bundle.js'></script>
           </body>
       </html>`
     );

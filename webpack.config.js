@@ -4,9 +4,10 @@ module.exports = {
   context: path.resolve(__dirname),
   entry: './src/index.js',
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '/dist/js'),
+    publicPath: '/dist/js/',
     filename: 'bundle.js',
-    publicPath: '/dist/',
+    chunkFilename: '[chunkhash].js',
   },
   resolve: {
     root: path.resolve(__dirname),
