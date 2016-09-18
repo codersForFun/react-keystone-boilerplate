@@ -8,15 +8,15 @@ if (typeof process.env.NODE_ENV === 'undefined' ||
 const keystone = require('keystone');
 
 keystone.init({
-  name: 'Unimer Landing',
-  brand: 'Unimer',
+  name: 'React App Keystone',
+  brand: 'ReactApp',
   favicon: './favicon.ico',
   less: 'dist',
   static: 'dist',
   views: './template/',
   'view engine': 'jade',
   'auto update': true,
-  mongo: process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/unimer-landing',
+  mongo: process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/react-app',
 
   session: true,
   auth: true,

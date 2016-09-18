@@ -7,7 +7,7 @@ const Header = () => (
         <div className="row">
           <img className="top-header-img" src="" alt="" />
           <img className="ripped ripped-header-img" src="" alt="" />
-          <h1>Place your content here</h1>
+          <h1>Place your content</h1>
         </div>
       </div>
     </header>
