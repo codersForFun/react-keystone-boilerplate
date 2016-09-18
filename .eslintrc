@@ -21,5 +21,6 @@
     "react/jsx-indent": [1, 2],
     "max-len": 0,
     "arrow-body-style": [0],
+    "import/no-extraneous-dependencies": 0,
   },
 }
