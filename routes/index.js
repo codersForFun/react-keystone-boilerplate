@@ -3,13 +3,13 @@ import Express from 'express';
 import path from 'path';
 
 // React And Redux Setup
-import { configureStore } from '../src/store';
-import { Provider } from 'react-redux';
 import React from 'react';
+import Helmet from 'react-helmet';
+import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import Helmet from 'react-helmet';
 
+import { configureStore } from '../src/store';
 import routes from '../src/routes';
 import { fetchComponentData } from './util/fetchData';
 
@@ -52,7 +52,7 @@ exports = module.exports = (app) => {
     );
   };
 
-  const renderError = err => {
+  const renderError = (err) => {
     const softTab = '&#32;&#32;&#32;&#32;';
     const errTrace = process.env.NODE_ENV !== 'production' ?
       `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
@@ -90,7 +90,7 @@ exports = module.exports = (app) => {
         .status(200)
         .end(renderFullPage(initialView, finalState));
       })
-      .catch((_error) => next(_error));
+      .catch(_error => next(_error));
     });
   });
 };

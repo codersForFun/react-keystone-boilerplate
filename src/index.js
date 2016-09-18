@@ -1,5 +1,3 @@
-require('babel-polyfill');
-
 import React from 'react';
 import { match } from 'react-router';
 import { render } from 'react-dom';
@@ -7,6 +5,9 @@ import { render } from 'react-dom';
 import App from './App';
 
 import { configureStore } from './store';
+
+require('babel-polyfill');
+
 
 // Initialize store
 const store = configureStore(window.__INITIAL_STATE__);
