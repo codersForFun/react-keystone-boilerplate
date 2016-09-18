@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "npm run watch",
-    "watchWebpack": "webpack --watch",
+    "watch": "webpack --watch",
     "build": "gulp build",
     "deploy": "gulp deploy",
     "keystone": "node keystone.js",
