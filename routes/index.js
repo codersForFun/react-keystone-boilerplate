@@ -12,6 +12,7 @@ import { match, RouterContext } from 'react-router';
 import { configureStore } from '../src/store';
 import routes from '../src/routes';
 import { fetchComponentData } from './util/fetchData';
+import pkg from '../package.json';
 
 // api
 import posts from './api/home.routes';
@@ -37,7 +38,7 @@ exports = module.exports = (app) => {
             ${head.script.toString()}
             <link rel='stylesheet' href='/styles/main.css' />
             <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
-            <title>Unimer Landing</title>
+            <title>${pkg.name}</title>
           </head>
           <body>
             <section role="main" class="react-container">
