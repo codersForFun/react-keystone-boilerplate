@@ -1,4 +1,10 @@
 'use strict';
+
+// ignore requesting file .scss
+require.extensions['.scss'] = () => {
+  return;
+};
+
 import Express from 'express';
 import path from 'path';
 
@@ -35,7 +41,7 @@ exports = module.exports = (app) => {
             ${head.meta.toString()}
             ${head.link.toString()}
             ${head.script.toString()}
-            <link rel='stylesheet' href='/styles/main.css' />
+            <link rel='stylesheet' href='/styles/style.css' />
             <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
             <title>Unimer Landing</title>
           </head>

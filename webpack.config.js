@@ -1,17 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  context: path.resolve(__dirname),
-  entry: './src/index.js',
-  output: {
-    path: path.join(__dirname, '/dist/js'),
-    publicPath: '/js/',
-    filename: 'bundle.js',
-    chunkFilename: '[chunkhash].js',
-  },
+  context: path.resolve(__dirname, './src'),
+  entry: './index.js',
   resolve: {
-    root: path.resolve(__dirname),
-    extensions: ['', '.js', '.json'],
+    root: path.resolve(__dirname, '/src'),
+    extensions: ['', '.js', '.json', '.scss'],
     modulesDirectories: ['node_modules'],
   },
   stats: {
@@ -36,6 +33,10 @@ module.exports = {
           presets: ['es2015', 'react', 'stage-0'],
           plugins: ['transform-runtime'],
         },
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css!sass'),
       },
       {
         test: /\.json$/,
@@ -67,4 +68,21 @@ module.exports = {
       },
     ],
   },
+  output: {
+    path: path.join(__dirname, '/dist/js'),
+    publicPath: '/js/',
+    filename: 'bundle.js',
+    chunkFilename: '[chunkhash].js',
+  },
+  plugins: [
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('../styles/style.css', {
+      allChunks: true,
+    }),
+  ],
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions'],
+    }),
+  ],
 };
