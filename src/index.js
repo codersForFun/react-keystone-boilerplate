@@ -6,6 +6,9 @@ import App from './App';
 
 import { configureStore } from './store';
 
+// styles
+import './styles/main.scss';
+
 require('babel-polyfill');
 
 
