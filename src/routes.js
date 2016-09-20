@@ -1,4 +1,4 @@
-import App from './components/App/App';
+import App from './components/App';
 
 if (typeof module !== 'undefined' && module.require) {
   if (typeof require.ensure === 'undefined') {
@@ -21,7 +21,7 @@ const rootRoute = {
       path: 'search',
       getComponent(location, cb) {
         require.ensure([], () => {
-          cb(null, require('./components/NotFound').default);
+          cb(null, require('./components/404').default);
         });
       },
     },

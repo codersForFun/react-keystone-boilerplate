@@ -1,20 +1,30 @@
-@import 'grid/normalize';
-@import 'grid/skeleton';
+//------------------------------------------------------------------------------
+// HELPERS
+//------------------------------------------------------------------------------
 
-*, *:before, *:after {
-  box-sizing: border-box;
-}
+@import "lib/vars";
+@import "lib/normalize";
+@import "lib/defaults";
+@import "lib/common";
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #ccc;
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
+// //------------------------------------------------------------------------------
+// // Components
+// //------------------------------------------------------------------------------
+//
+// @import "components/buttons";
+// @import "components/social";
+// @import "components/topbar";
+// @import "components/header";
+// @import "components/modals";
+// @import "components/footer";
+// @import "components/nav";
+// @import "components/submenu";
+// @import "components/wysiwyg";
+// @import "components/sidebar";
+// @import "components/forms";
 
-section {
- padding: 20px;
-}
+//------------------------------------------------------------------------------
+// Font Awesome
+//------------------------------------------------------------------------------
+
+// @import "fontawesome/fontawesome";

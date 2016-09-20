@@ -1,0 +1,62 @@
+/*------------------------------------*\
+		#_COMMON
+\*------------------------------------*/
+
+/**
+*
+* Common stuff throughout this specific project that isn't quite as generic
+* as what you can find on defaults (which should apply to any project)
+*
+* Comments about specific parts of the code show go here under this format:
+* 1) Example about explanation
+*
+*/
+
+
+/* FONTS & TEXT */
+
+.h1 {
+	font-family: $main-font;
+	font-size: 1.7857142857rem;
+	color: $text-color;
+	line-height: 1;
+}
+
+.h2 {
+	font-family: $main-font;
+	color: $text-color;
+	font-size: 1.3571428571rem;
+	line-height: initial;
+}
+
+
+.accent-text {
+	font-family: $main-font;
+	font-size: 1rem;
+	color: $white;
+}
+
+
+.activeMenu {
+	background-color: $white;
+	color: $white !important;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (min-width: $breakpoint-md) {
+
+	.h1 {
+		font-size: 3rem;
+	}
+
+	.h2 {
+		font-size: 2.25rem;
+	}
+
+	.accent-text {
+		font-size: 1.1875rem;
+	}
+
+}

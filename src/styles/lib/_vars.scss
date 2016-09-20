@@ -1,0 +1,95 @@
+/*------------------------------------*\
+		#_VARS
+\*------------------------------------*/
+
+/**
+*
+* Comments about specific parts of the code show go here under this format:
+* 1) Example about explanation
+*
+*/
+
+
+/* COLORS */
+$white: #fff;
+$black: #000;
+$grey: #e1e1e1;
+$body-color: $white;
+$text-color: #58595b;
+$text-color--light: #5f5f5f;
+$text-color--dark: $black;
+$accent-hot: red;
+$modal-back: $white;
+
+
+/* BREAKPOINTS */
+$breakpoint-sm: '450px';
+$breakpoint-md: '768px';
+$breakpoint-lg: '1260px';
+
+$breakpoint-sm--header: '635px';
+$breakpoint-md--header: '845px';
+$breakpoint-lg--header: '970px';
+$breakpoint-xl--header: '1120px';
+
+
+/* VARIOUS */
+$negative-1: -1;
+
+
+/* FONTS */
+
+// Families
+$main-font: Helvetica, Arial, sans-serif;
+$sec-font: Helvetica, Arial, sans-serif;
+
+// Sizes
+$base-font-size: 16px;
+$base-font-size--sm: 14px;
+
+
+/* MODAL */
+
+//** Unit-less `line-height` for use in components like buttons.
+$line-height-base:        1.428571429 !default; // 20/14
+
+$screen-sm:                  768px !default;
+$screen-md:                  992px !default;
+$screen-sm-min:              $screen-sm !default;
+$screen-md-min:              $screen-md !default;
+
+$zindex-modal-background:  1040 !default;
+$zindex-modal:             1050 !default;
+
+//** Padding applied to the modal body
+$modal-inner-padding:         15px !default;
+
+//** Padding applied to the modal title
+$modal-title-padding:         15px !default;
+
+//** Modal title line-height
+$modal-title-line-height:     $line-height-base !default;
+
+//** Background color of modal content area
+$modal-content-bg:                             #fff !default;
+//** Modal content border color
+$modal-content-border-color:                   rgba(0,0,0,.2) !default;
+//** Modal content border color **for IE8**
+$modal-content-fallback-border-color:          #999 !default;
+
+//** Modal backdrop background color
+$modal-backdrop-bg:           #000 !default;
+//** Modal backdrop opacity
+$modal-backdrop-opacity:      .5 !default;
+//** Modal header border color
+$modal-header-border-color:   #e5e5e5 !default;
+//** Modal footer border color
+$modal-footer-border-color:   $modal-header-border-color !default;
+
+$modal-lg:                    900px !default;
+$modal-md:                    600px !default;
+$modal-sm:                    300px !default;
+
+$border-radius-base:        4px !default;
+$border-radius-large:       6px !default;
+$border-radius-small:       3px !default;

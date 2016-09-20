@@ -1,5 +1,5 @@
 // Import Actions
-import { TOGGLE_ADD_POST } from './App-actions';
+import { TOGGLE_ADD_POST } from './app_actions';
 
 // Initial State
 const initialState = {
