@@ -29,7 +29,8 @@
     "babel": "inherit"
   },
   "scripts": {
-    "start": "npm run watch",
+    "start": "npm run watch&npm run keystone",
+    "dev": "npm run watch&npm run server",
     "watch": "webpack --watch",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "deploy": "gulp publish",
