@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import '../styles/main.scss';
+import './style.scss';
 
 const Header = () => (
   <div>
