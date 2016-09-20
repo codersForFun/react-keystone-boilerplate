@@ -1,12 +1,9 @@
 'use strict';
 
-// ignore requesting file .scss
-require.extensions['.scss'] = () => {
-  return;
-};
-
 import Express from 'express';
 import path from 'path';
+import keystone from 'keystone';
+
 
 // React And Redux Setup
 import React from 'react';
@@ -23,11 +20,17 @@ import pkg from '../package.json';
 // api
 import posts from './api/home.routes';
 
+// ignore requesting file .scss
+require.extensions['.scss'] = () => {
+  return;
+};
+
 // Setup Route Bindings
 exports = module.exports = (app) => {
   app.use(Express.static(path.resolve(__dirname, '../dist')));
 
   // Setup API use
+  app.all('/api*', keystone.middleware.api);
   app.use('/api', posts);
 
   // Render Initial HTML
