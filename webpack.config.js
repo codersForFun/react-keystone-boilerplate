@@ -59,8 +59,9 @@ module.exports = {
         loader: 'url?limit=10000&mimetype=image/svg+xml',
       },
       {
-        test: /\.png$/,
-        loader: 'url?limit=10000&mimetype=image/png',
+        test: /\.(jpg|jpeg|gif|png)$/,
+        exclude: /node_modules/,
+        loader: 'url-loader?limit=1024&name=../images/[name].[ext]',
       },
       {
         test: /\.gif$/,

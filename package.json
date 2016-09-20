@@ -34,7 +34,7 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "deploy": "gulp publish",
     "keystone": "node keystone.js",
-    "keystoneD": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon --debug keystone.js",
+    "keystoneD": "cross-env NODE_ENV=development nodemon --debug keystone.js",
     "inspector": "node-inspector --hidden node_modules/",
     "server": "npm run inspector& npm run keystoneD",
     "clean": "rimraf dist"
