@@ -38,7 +38,7 @@ React Router renders components according to route requested.
 
 We use React Router's match function for handling all page requests so that browser history works.
 
-### Make your project
+## Make your project
 To make your version, follow these steps
 
 1. Clone this project
