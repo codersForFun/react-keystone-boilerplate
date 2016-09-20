@@ -1,0 +1,208 @@
+/*------------------------------------*\
+		#_DEFAULTS
+\*------------------------------------*/
+
+/**
+*
+* 1) Clearfix and generic floats.
+*
+*/
+
+html{
+	font-family: $main-font;
+	line-height: 1.5;
+	font-size: $base-font-size;
+	height: 100%;
+	width: 100%;
+
+	@media screen and (max-width: $breakpoint-sm){
+		font-size: $base-font-size--sm;
+	}
+
+}
+
+	body {
+		background: $body-color;
+		height: 100%;
+		width: 100%;
+	}
+
+	.body-table {
+		display: table;
+
+		.main {
+			display: table-row;
+			height: 1px;
+			height: 100%;
+		}
+
+	}
+
+
+* {
+	box-sizing: border-box;
+}
+
+/* [1] */
+.cf:after, .cf:before {
+	content: "";
+	display: table;
+}
+
+.cf:after {
+		clear: both;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.t-center {
+	text-align: center;
+}
+
+.t-left {
+	text-align: left;
+}
+
+.t-right {
+	text-align: right;
+}
+
+
+.absolute {
+	position: absolute;
+}
+
+.relative {
+	position: relative;
+}
+
+
+.align-y {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.align-x {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.align-xy {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+a {
+	text-decoration: none;
+}
+
+ul, li,
+img,
+p,
+h1, h2, h3, h4, h5,
+.list {
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	border: none;
+	-webkit-appearance: none;
+	border-radius: 0;
+}
+
+
+.list__item,
+.nav__item {
+	list-style-type: none;
+}
+
+.active a {
+	color: $white;
+}
+
+
+.no-show {
+	display: none !important;
+}
+
+.show {
+	display: block !important;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.inline--imp {
+	display: inline-block !important;
+}
+
+
+.mobile {
+
+	@media (min-width: $breakpoint-sm) {
+		display: none;
+	}
+
+}
+
+.tablet {
+
+	@media (min-width: $breakpoint-md) {
+		display: none;
+	}
+
+}
+
+.desktop {
+
+	@media (max-width: $breakpoint-md) {
+		display: none;
+	}
+
+}
+
+
+.auto-height {
+	height: auto !important;
+}
+
+.over-hide{
+	overflow: hidden;
+}
+
+
+/* [1] */
+.ir {
+	display: block;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+/* [2] */
+.media-top {
+	vertical-align: top;
+}
+
+
+
+.caps {
+	text-transform: uppercase;
+}
+
+
+.slick-slide {
+	outline: none;
+	vertical-align: top;
+}

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 // Import Actions
-import { toggleAddPost } from './App-actions';
+import { toggleAddPost } from './app_actions';
 
 export class App extends Component {
   constructor(props) {
