@@ -1,3 +1,4 @@
+// Import components
 import App from './components/App';
 
 if (typeof module !== 'undefined' && module.require) {

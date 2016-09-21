@@ -1,10 +1,5 @@
 'use strict';
 
-// ignore requesting file .scss
-require.extensions['.scss'] = () => {
-  return;
-};
-
 import Express from 'express';
 import path from 'path';
 
@@ -14,7 +9,6 @@ import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-
 import { configureStore } from '../client/store';
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
@@ -22,6 +16,11 @@ import pkg from '../package.json';
 
 // api
 import posts from './api/home.routes';
+
+// ignore requesting file .scss
+require.extensions['.scss'] = () => {
+  return;
+};
 
 // Setup Route Bindings
 exports = module.exports = (app) => {
@@ -69,20 +68,11 @@ exports = module.exports = (app) => {
   // match the backend routes with the client routes
   app.use((req, res, next) => {
     match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
-      if (error) {
-        res.status(500).end(renderError(error));
-      }
-
-      if (redirectLocation) {
-        res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-      }
-
-      if (!renderProps) {
-        return next();
-      }
+      if (error) res.status(500).end(renderError(error));
+      if (redirectLocation) res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+      if (!renderProps) return next();
 
       const store = configureStore();
-
       return fetchComponentData(store, renderProps.components, renderProps.params)
       .then(() => {
         const initialView = renderToString(
