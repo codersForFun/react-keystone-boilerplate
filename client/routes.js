@@ -15,7 +15,7 @@ const rootRoute = {
   indexRoute: {
     getComponent(location, cb) {
       require.ensure([], () => {
-        cb(null, require('./components/Header').default);
+        cb(null, require('./components/Layout').default);
       });
     },
   },
