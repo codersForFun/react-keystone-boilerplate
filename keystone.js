@@ -28,6 +28,6 @@ keystone.init({
 keystone.import('models/');
 
 // This is where your normal routes and files are handled
-keystone.set('routes', require('./routes'));
+keystone.set('routes', require('./server'));
 
 keystone.start();
