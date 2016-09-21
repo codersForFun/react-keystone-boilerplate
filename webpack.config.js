@@ -4,10 +4,10 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  context: path.resolve(__dirname, './src'),
+  context: path.resolve(__dirname, './client'),
   entry: './index.js',
   resolve: {
-    root: path.resolve(__dirname, '/src'),
+    root: path.resolve(__dirname, '/client'),
     extensions: ['', '.js', '.json', '.scss'],
     modulesDirectories: ['node_modules'],
   },
@@ -26,7 +26,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: path.join(__dirname, '/src'),
+        include: path.join(__dirname, '/client'),
         loader: 'babel-loader',
         query: {
           cacheDirectory: true,
