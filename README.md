@@ -1,5 +1,5 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
+![title](https://travis-ci.org/codersForFun/react-keystone-boilerplate)
 
 React-keystone-boilerplate is a scaffolding tool which makes it easy to build isomorphic apps using Keystone, Mongo, Express, React, Redux and NodeJS.
 
