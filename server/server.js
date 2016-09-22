@@ -3,6 +3,8 @@ import compression from 'compression';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
+
+// React and Redux
 import React from 'react';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
@@ -11,24 +13,18 @@ import Helmet from 'react-helmet';
 import { configureStore } from '../client/store';
 
 // Import required modules
-import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import serverConfig from '../server/config';
+import routes from '../client/routes';
 import pkg from '../package.json';
 
-// api
+// Api calls
 import posts from './api/home.routes';
 
 // ignore requesting file .scss
 require.extensions['.scss'] = () => {
   return;
 };
-
-// Initialize the Express App
-const app = new Express();
-
-// Setup API use
-app.use('/api', posts);
 
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
@@ -40,6 +36,10 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
   }
 });
 
+// Initialize the Express App
+const app = new Express();
+// Setup API use
+app.use('/api', posts);
 // Apply body Parser and server public assets and routes
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
