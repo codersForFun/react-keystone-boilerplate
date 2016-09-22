@@ -29,14 +29,14 @@
     "babel": "inherit"
   },
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "dev": "npm run watch & npm run server",
     "watch": "webpack --watch",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "deploy": "gulp publish",
     "startDev": "cross-env NODE_ENV=development nodemon --debug index.js",
     "inspector": "node-inspector --hidden node_modules/",
-    "server": "npm run inspector& npm run keystoneD",
+    "server": "npm run inspector& npm run startDev",
     "clean": "rimraf dist"
   },
   "author": "David Pastor",
@@ -55,8 +55,6 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "history": "^4.0.1",
-    "keystone": "^4.0.0-beta.2",
-    "keystone-email": "^1.0.5",
     "limax": "^1.4.0",
     "multer": "^1.2.0",
     "node-ensure": "0.0.0",
