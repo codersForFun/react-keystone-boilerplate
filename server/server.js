@@ -1,6 +1,5 @@
 import Express from 'express';
 import compression from 'compression';
-import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 
@@ -14,7 +13,8 @@ import { configureStore } from '../client/store';
 
 // Import required modules
 import { fetchComponentData } from './util/fetchData';
-import serverConfig from '../server/config';
+import { db } from './db/db';
+import connect from './db/config';
 import routes from '../client/routes';
 import pkg from '../package.json';
 
@@ -26,15 +26,8 @@ require.extensions['.scss'] = () => {
   return;
 };
 
-// Set native promises as mongoose promise
-mongoose.Promise = global.Promise;
 // MongoDB Connection
-mongoose.connect(serverConfig.mongoURL, (error) => {
-  if (error) {
-    console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
-    throw error;
-  }
-});
+connect();
 
 // Initialize the Express App
 const app = new Express();
@@ -109,8 +102,8 @@ app.use((req, res, next) => {
 });
 
 // start app
-app.listen(serverConfig.port, (error) => {
+app.listen(db.port, (error) => {
   if (!error) {
-    console.log(`App is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
+    console.log(`App is running on port: ${db.port}! Build something amazing!`); // eslint-disable-line
   }
 });
