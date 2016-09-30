@@ -86,5 +86,5 @@ module.exports = {
       browsers: ['last 2 versions'],
     }),
   ],
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
 };
