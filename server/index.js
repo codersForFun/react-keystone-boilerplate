@@ -67,6 +67,10 @@ exports = module.exports = (app) => {
 
   // match the backend routes with the client routes
   app.use((req, res, next) => {
+    if (req.path.match(/^\/keystone/)) {
+      next();
+      return;
+    }
     match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
       if (error) res.status(500).end(renderError(error));
       if (redirectLocation) res.redirect(302, redirectLocation.pathname + redirectLocation.search);
