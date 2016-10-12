@@ -7,29 +7,62 @@ if (typeof module !== 'undefined' && module.require) {
   }
 }
 
-// TODO: for Manuel -> check if this can be
-// changed with diff method
-// Test
 const rootRoute = {
   component: App,
   path: '/',
   indexRoute: {
-    getComponent(location, cb) {
+    getComponent (location, cb) {
       require.ensure([], () => {
         cb(null, require('./components/Layout').default);
       });
-    },
+    }
   },
-  childRoutes: [
+  childRoutes: [{
+    path: 'about',
+    getComponent (location, cb) {
+      require.ensure([], () => {
+        cb(null, require('./components/About/About').default);
+      });
+    }
+  },
     {
-      path: 'search',
-      getComponent(location, cb) {
+      path: '*',
+      getComponent (location, cb) {
         require.ensure([], () => {
           cb(null, require('./components/404').default);
         });
-      },
-    },
-  ],
+      }
+    }
+  // {
+  //   path: 'blog',
+  //   getComponent (location, cb) {
+  //     require.ensure([], () => {
+  //       cb(null, require('./components/Blog/Blog').default)
+  //     })
+  //   }
+  // }, {
+  //   path: 'destinations',
+  //   getComponent (location, cb) {
+  //     require.ensure([], () => {
+  //       cb(null, require('./components/Destinations/Destinations').default)
+  //     })
+  //   }
+  // }, {
+  //   path: 'shop',
+  //   getComponent (location, cb) {
+  //     require.ensure([], () => {
+  //       cb(null, require('./components/Shop/Shop').default)
+  //     })
+  //   }
+  // }, {
+  //   path: 'contact',
+  //   getComponent (location, cb) {
+  //     require.ensure([], () => {
+  //       cb(null, require('./components/Contact/Contact').default)
+  //     })
+  //   }
+  // }
+  ]
 };
 
 export default rootRoute;

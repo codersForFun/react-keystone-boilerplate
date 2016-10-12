@@ -7,6 +7,18 @@
 @import "lib/defaults";
 @import "lib/common";
 
+// --------------------------------
+// Basic reset and setter
+// --------------------------------
+$oswald: 'Oswald', sans-serif;
+$alegreya: 'Alegreya', serif;
+
+body, html {
+  font-family: $oswald;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 // //------------------------------------------------------------------------------
 // // Components
 // //------------------------------------------------------------------------------

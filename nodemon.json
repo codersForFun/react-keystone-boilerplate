@@ -7,8 +7,8 @@
   "verbose": true,
   "watch": [
     "models/*",
-    "routes/*",
-    "src/*",
+    "server/*",
+    "client/*",
     "keystone.js"
   ],
   "env": {

@@ -3,9 +3,16 @@
   "plugins": ["transform-react-constant-elements", "transform-react-inline-elements"],
   "env": {
     "production": {
-      "presets": ["es2015", "react", "react-optimize", "es2015-native-modules",
+      "presets": ["es2015", "react", "react-optimize",
         "stage-0"
       ]
-    }
+    },
+    "node": {
+     "plugins": [
+       [
+         "babel-plugin-transform-require-ignore", { "extensions": [".scss", ".css"] }
+       ]
+     ]
+   }
   }
 }

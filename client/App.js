@@ -1,27 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 
 // Import Routes
 import routes from './routes';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
-
-  render() {
-    return (
-      <Provider store={this.props.store}>
-        <Router routes={routes} history={browserHistory} />
-      </Provider>
-    );
-  }
-}
+const App = (props) => {
+  return (
+    <Provider store={props.store}>
+      <Router routes={routes} history={browserHistory} />
+    </Provider>
+  );
+};
 
 App.propTypes = {
-  store: React.PropTypes.object.isRequired,
+  store: React.PropTypes.object.isRequired
 };
 
 App.Routes = routes;

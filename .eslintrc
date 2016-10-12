@@ -1,38 +1,3 @@
 {
-  "extends": "airbnb",
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-        "jsx": true
-    }
-  },
-  "env": {
-    "browser": true,
-    "node": true,
-    "mocha": true,
-    "jquery": true
-  },
-  "parser": "babel-eslint",
-  "rules": {
-    "react/prop-types": 0,
-    "react/jsx-filename-extension": 0,
-    "react/forbid-prop-types": 0,
-    "react/jsx-no-bind": 0,
-    "comma-dangle": [1, "always-multiline"],
-    "no-underscore-dangle": 0,
-    "strict": 0,
-    "no-console": 0,
-    "global-require": 0,
-    "no-param-reassign": 0,
-    "react/jsx-closing-bracket-location": 1,
-    "react/jsx-indent-props": [1, 2],
-    "react/jsx-indent": [1, 2],
-    "max-len": 0,
-    "arrow-body-style": [0],
-    "import/no-extraneous-dependencies": 0,
-    "import/no-named-as-default": 0,
-    "import/prefer-default-export": 0,
-    "import/extensions": 0,
-  },
+  "extends": ["semistandard", "standard-react"]
 }

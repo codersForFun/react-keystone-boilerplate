@@ -1,8 +1,3 @@
-'use strict';
-
-import Express from 'express';
-import path from 'path';
-
 // React And Redux Setup
 import React from 'react';
 import Helmet from 'react-helmet';
@@ -14,21 +9,8 @@ import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import pkg from '../package.json';
 
-// api
-import posts from './api/home.routes';
-
-// ignore requesting file .scss
-require.extensions['.scss'] = () => {
-  return;
-};
-
 // Setup Route Bindings
 exports = module.exports = (app) => {
-  app.use(Express.static(path.resolve(__dirname, '../dist')));
-
-  // Setup API use
-  app.use('/api', posts);
-
   // Render Initial HTML
   const renderFullPage = (html, initialState) => {
     const head = Helmet.rewind();
@@ -42,7 +24,7 @@ exports = module.exports = (app) => {
             ${head.link.toString()}
             ${head.script.toString()}
             <link rel='stylesheet' href='/styles/style.css' />
-            <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
+            <link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i,900|Oswald:300,400,700" rel="stylesheet">
             <title>${pkg.name}</title>
           </head>
           <body>
@@ -60,8 +42,8 @@ exports = module.exports = (app) => {
 
   const renderError = (err) => {
     const softTab = '&#32;&#32;&#32;&#32;';
-    const errTrace = process.env.NODE_ENV !== 'production' ?
-      `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
+    const errTrace = process.env.NODE_ENV !== 'production'
+    ? `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
     return renderFullPage(`Server Error${errTrace}`, {});
   };
 
@@ -71,6 +53,8 @@ exports = module.exports = (app) => {
       next();
       return;
     }
+
+    // match any route coming from the client side
     match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
       if (error) res.status(500).end(renderError(error));
       if (redirectLocation) res.redirect(302, redirectLocation.pathname + redirectLocation.search);
@@ -85,13 +69,12 @@ exports = module.exports = (app) => {
           </Provider>
         );
         const finalState = store.getState();
-
         res
         .set('Content-Type', 'text/html')
         .status(200)
         .end(renderFullPage(initialView, finalState));
       })
-      .catch(_error => next(_error));
+      .catch((_error) => (next(_error)));
     });
   });
 };

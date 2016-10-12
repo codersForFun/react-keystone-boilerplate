@@ -1,21 +1,28 @@
 .header {
-  color: #fff;
-  background: #0066bb url(../../images/reactjs.png) no-repeat right 10px;
-  background-size: contain;
+  color: black;
 }
 
   .header__title {
     display: inline-block;
     padding: 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 3.5em;
   }
 
-  .header__link {
+  .main-nav {
+    text-align: center;
+  }
+
+  .main-nav-link {
+    font-weight: 400;
+    letter-spacing: 2px;
     display: inline-block;
     margin: 10px;
     padding: 10px;
-    color: #fff;
     text-decoration: none;
     border-radius: 3px;
+    color: black;
 
     &.active,
     &:hover {
