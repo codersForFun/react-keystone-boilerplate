@@ -21,7 +21,7 @@ keystone.init({
   session: true,
   auth: true,
   'user model': 'User',
-  'cookie secret': process.env.COOKIE_SECRET || 'demo',
+  'cookie secret': process.env.COOKIE_SECRET || 'demo'
 });
 
 // Let keystone know where your models are defined. Here we have it at the `/models`

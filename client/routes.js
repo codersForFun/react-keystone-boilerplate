@@ -14,22 +14,22 @@ const rootRoute = {
   component: App,
   path: '/',
   indexRoute: {
-    getComponent(location, cb) {
+    getComponent (location, cb) {
       require.ensure([], () => {
         cb(null, require('./components/Layout').default);
       });
-    },
+    }
   },
   childRoutes: [
     {
       path: 'search',
-      getComponent(location, cb) {
+      getComponent (location, cb) {
         require.ensure([], () => {
           cb(null, require('./components/404').default);
         });
-      },
-    },
-  ],
+      }
+    }
+  ]
 };
 
 export default rootRoute;

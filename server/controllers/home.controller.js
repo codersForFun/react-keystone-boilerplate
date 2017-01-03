@@ -3,7 +3,7 @@
 /**
  * Get all posts
  */
-export function getPosts(req, res) {
+export function getPosts (req, res) {
   console.log('ENTRE API');
   res.send(200);
 }

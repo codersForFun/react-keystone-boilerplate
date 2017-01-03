@@ -6,12 +6,12 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 
 class App extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.props = props;
   }
 
-  render() {
+  render () {
     return (
       <Provider store={this.props.store}>
         <Router routes={routes} history={browserHistory} />
@@ -21,7 +21,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  store: React.PropTypes.object.isRequired,
+  store: React.PropTypes.object.isRequired
 };
 
 App.Routes = routes;

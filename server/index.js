@@ -1,8 +1,5 @@
 'use strict';
 
-import Express from 'express';
-import path from 'path';
-
 // React And Redux Setup
 import React from 'react';
 import Helmet from 'react-helmet';
@@ -24,8 +21,6 @@ require.extensions['.scss'] = () => {
 
 // Setup Route Bindings
 exports = module.exports = (app) => {
-  app.use(Express.static(path.resolve(__dirname, '../dist')));
-
   // Setup API use
   app.use('/api', posts);
 
@@ -60,8 +55,8 @@ exports = module.exports = (app) => {
 
   const renderError = (err) => {
     const softTab = '&#32;&#32;&#32;&#32;';
-    const errTrace = process.env.NODE_ENV !== 'production' ?
-      `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
+    const errTrace = process.env.NODE_ENV !== 'production'
+      ? `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
     return renderFullPage(`Server Error${errTrace}`, {});
   };
 
@@ -87,9 +82,9 @@ exports = module.exports = (app) => {
         const finalState = store.getState();
 
         res
-        .set('Content-Type', 'text/html')
-        .status(200)
-        .end(renderFullPage(initialView, finalState));
+          .set('Content-Type', 'text/html')
+          .status(200)
+          .end(renderFullPage(initialView, finalState));
       })
       .catch(_error => next(_error));
     });
