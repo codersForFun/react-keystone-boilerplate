@@ -2,7 +2,7 @@
   "name": "generic-name",
   "version": "0.0.1",
   "description": "React JS application boilerplate",
-  "main": "app.js",
+  "main": "keystone.js",
   "repository": {
     "type": "git",
     "url": ""
@@ -14,20 +14,12 @@
   "keywords": [
     "gulp",
     "react",
-    "browserify",
-    "seed",
+    "keystone",
     "boilerplate",
-    "kickstarter",
     "ES6",
     "ES2015",
     "babel"
   ],
-  "ava": {
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  },
   "scripts": {
     "start": "npm run watch&npm run keystone",
     "dev": "npm run watch&npm run server",
