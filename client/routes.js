@@ -7,9 +7,6 @@ if (typeof module !== 'undefined' && module.require) {
   }
 }
 
-// TODO: for Manuel -> check if this can be
-// changed with diff method
-// Test
 const rootRoute = {
   component: App,
   path: '/',

@@ -3,9 +3,12 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
+
 module.exports = {
-  context: path.resolve(__dirname, './client'),
-  entry: './index.js',
+  context: path.resolve(__dirname),
+  entry: './client/index.js',
   resolve: {
     root: path.resolve(__dirname, '/client'),
     extensions: ['', '.js', '.json', '.scss'],
@@ -48,15 +51,19 @@ module.exports = {
         test: /\.eot(\?.+)?$/,
         loader: 'url?limit=10000'
       },
+      // {
+      //   test: /\.svg(\?.+)?$/,
+      //   loader: 'url?limit=10000&mimetype=image/svg+xml'
+      // },
       {
-        test: /\.svg(\?.+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml'
+        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
+        loader: 'url-loader?limit=1024&name=[name].[ext]'
       },
-      {
-        test: /\.(jpg|jpeg|gif|png)$/,
-        exclude: /node_modules/,
-        loader: 'url-loader?limit=1024&name=../images/[name].[ext]'
-      },
+      // {
+      //   test: /\.(jpg|jpeg|gif|png)$/,
+      //   exclude: /node_modules/,
+      //   loader: 'url-loader?limit=1024&name=../images/[name].[ext]'
+      // },
       {
         test: /\.gif$/,
         loader: 'url?limit=10000&mimetype=image/gif'
@@ -73,7 +80,12 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('../styles/style.css', {
       allChunks: true
-    })
+    }),
+    new webpack.DefinePlugin({
+      __SERVER__: false,
+      __DEVELOPMENT__: true
+    }),
+    new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
   ],
   postcss: [
     autoprefixer({

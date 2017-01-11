@@ -2,7 +2,7 @@
   "name": "generic-name",
   "version": "0.0.1",
   "description": "React JS application boilerplate",
-  "main": "keystone.js",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": ""
@@ -21,13 +21,13 @@
     "babel"
   ],
   "scripts": {
-    "start": "npm run watch&npm run keystone",
-    "dev": "npm run watch&npm run server",
+    "start": "npm run watch & npm run keystone",
+    "dev": "npm run watch & npm run server",
     "watch": "webpack --watch",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "deploy": "gulp publish",
-    "keystone": "node keystone.js",
-    "keystoneD": "cross-env NODE_ENV=development nodemon keystone.js",
+    "keystone": "node app.js",
+    "keystoneD": "cross-env NODE_ENV=development nodemon app.js",
     "inspector": "node-inspector --hidden node_modules/",
     "server": "npm run keystoneD",
     "clean": "rimraf dist"
@@ -57,7 +57,8 @@
     "react-router": "2.8.1",
     "redux-thunk": "2.1.0",
     "serve-favicon": "2.3.0",
-    "serve-static": "1.11.1"
+    "serve-static": "1.11.1",
+    "webpack-isomorphic-tools": "^2.6.5"
   },
   "devDependencies": {
     "autoprefixer": "6.4.1",
